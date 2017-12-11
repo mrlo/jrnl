@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Advanced Usage &#8212; jrnl 1.9.8 documentation</title>
-    
     <link rel="stylesheet" href="_static/css/jrnl.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -34,7 +31,7 @@
     <link rel="shortcut icon" href="_static/img/favicon.ico">
   
   </head>
-  <body role="document">  
+  <body>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -89,13 +86,13 @@
 </li>
 <li><dl class="first docutils">
 <dt><code class="docutils literal"><span class="pre">linewrap</span></code></dt>
-<dd>controls the width of the output. Set to <code class="docutils literal"><span class="pre">false</span></code> if you don&#8217;t want to wrap long lines.</dd>
+<dd>controls the width of the output. Set to <code class="docutils literal"><span class="pre">false</span></code> if you don’t want to wrap long lines.</dd>
 </dl>
 </li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Although it seems intuitive to use the <cite>#</cite> character for tags, there&#8217;s a drawback: on most shells, this is interpreted as a meta-character starting a comment. This means that if you type</p>
+<p>Although it seems intuitive to use the <cite>#</cite> character for tags, there’s a drawback: on most shells, this is interpreted as a meta-character starting a comment. This means that if you type</p>
 <div class="highlight-note"><div class="highlight"><pre><span></span>jrnl Implemented endless scrolling on the #frontend of our website.
 </pre></div>
 </div>
@@ -108,11 +105,11 @@
 </div>
 <div class="section" id="dayone-integration">
 <h2>DayOne Integration<a class="headerlink" href="#dayone-integration" title="Permalink to this headline">¶</a></h2>
-<p>Using your DayOne journal instead of a flat text file is dead simple &#8211; instead of pointing to a text file, change your <code class="docutils literal"><span class="pre">.jrnl_config</span></code> to point to your DayOne journal. This is a folder named something like <code class="docutils literal"><span class="pre">Journal_dayone</span></code> or <code class="docutils literal"><span class="pre">Journal.dayone</span></code>, and it&#8217;s located at</p>
+<p>Using your DayOne journal instead of a flat text file is dead simple – instead of pointing to a text file, change your <code class="docutils literal"><span class="pre">.jrnl_config</span></code> to point to your DayOne journal. This is a folder named something like <code class="docutils literal"><span class="pre">Journal_dayone</span></code> or <code class="docutils literal"><span class="pre">Journal.dayone</span></code>, and it’s located at</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">~/Library/Application</span> <span class="pre">Support/Day</span> <span class="pre">One/</span></code> by default</li>
-<li><code class="docutils literal"><span class="pre">~/Dropbox/Apps/Day</span> <span class="pre">One/</span></code> if you&#8217;re syncing with Dropbox and</li>
-<li><code class="docutils literal"><span class="pre">~/Library/Mobile</span> <span class="pre">Documents/5U8NS4GX82~com~dayoneapp~dayone/Documents/</span></code> if you&#8217;re syncing with iCloud.</li>
+<li><code class="docutils literal"><span class="pre">~/Dropbox/Apps/Day</span> <span class="pre">One/</span></code> if you’re syncing with Dropbox and</li>
+<li><code class="docutils literal"><span class="pre">~/Library/Mobile</span> <span class="pre">Documents/5U8NS4GX82~com~dayoneapp~dayone/Documents/</span></code> if you’re syncing with iCloud.</li>
 </ul>
 <p>Instead of all entries being in a single file, each entry will live in a separate <cite>plist</cite> file. So your <code class="docutils literal"><span class="pre">.jrnl_config</span></code> should look like this:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -156,7 +153,7 @@ jrnl work -n <span class="m">3</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Your <code class="docutils literal"><span class="pre">default</span></code> and your <code class="docutils literal"><span class="pre">food</span></code> journals won&#8217;t be encrypted, however your <code class="docutils literal"><span class="pre">work</span></code> journal will! You can override all options that are present at the top level of <code class="docutils literal"><span class="pre">.jrnl_config</span></code>, just make sure that at the very least you specify a <code class="docutils literal"><span class="pre">&quot;journal&quot;:</span> <span class="pre">...</span></code> key that points to the journal file of that journal.</p>
+<p>Your <code class="docutils literal"><span class="pre">default</span></code> and your <code class="docutils literal"><span class="pre">food</span></code> journals won’t be encrypted, however your <code class="docutils literal"><span class="pre">work</span></code> journal will! You can override all options that are present at the top level of <code class="docutils literal"><span class="pre">.jrnl_config</span></code>, just make sure that at the very least you specify a <code class="docutils literal"><span class="pre">&quot;journal&quot;:</span> <span class="pre">...</span></code> key that points to the journal file of that journal.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Changing <code class="docutils literal"><span class="pre">encrypt</span></code> to a different value will not encrypt or decrypt your journal file, it merely says whether or not your journal <cite>is</cite> encrypted. Hence manually changing this option will most likely result in your journal file being impossible to load.</p>

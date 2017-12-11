@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Encryption &#8212; jrnl 1.9.8 documentation</title>
-    
     <link rel="stylesheet" href="_static/css/jrnl.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -34,7 +31,7 @@
     <link rel="shortcut icon" href="_static/img/favicon.ico">
   
   </head>
-  <body role="document">  
+  <body>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -45,7 +42,7 @@
 <span id="id1"></span><h1>Encryption<a class="headerlink" href="#encryption" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="encrypting-and-decrypting">
 <h2>Encrypting and decrypting<a class="headerlink" href="#encrypting-and-decrypting" title="Permalink to this headline">¶</a></h2>
-<p>If you don&#8217;t choose to encrypt your file when you run <cite>jrnl</cite> for the first time, you can encrypt your existing journal file or change its password using</p>
+<p>If you don’t choose to encrypt your file when you run <cite>jrnl</cite> for the first time, you can encrypt your existing journal file or change its password using</p>
 <div class="highlight-sh"><div class="highlight"><pre><span></span>jrnl --encrypt
 </pre></div>
 </div>
@@ -57,12 +54,12 @@
 </div>
 <div class="section" id="storing-passwords-in-your-keychain">
 <h2>Storing passwords in your keychain<a class="headerlink" href="#storing-passwords-in-your-keychain" title="Permalink to this headline">¶</a></h2>
-<p>Whenever you encrypt your journal, you are asked whether you want to store the encryption password in your keychain. If you do this, you won&#8217;t have to enter your password every time you want to write or read your journal.</p>
-<p>If you don&#8217;t initially store the password in the keychain but decide to do so at a later point &#8211; or maybe want to store it on one computer but not on another &#8211; you can simply run <code class="docutils literal"><span class="pre">jrnl</span> <span class="pre">--encrypt</span></code> on an encrypted journal and use the same password again.</p>
+<p>Whenever you encrypt your journal, you are asked whether you want to store the encryption password in your keychain. If you do this, you won’t have to enter your password every time you want to write or read your journal.</p>
+<p>If you don’t initially store the password in the keychain but decide to do so at a later point – or maybe want to store it on one computer but not on another – you can simply run <code class="docutils literal"><span class="pre">jrnl</span> <span class="pre">--encrypt</span></code> on an encrypted journal and use the same password again.</p>
 </div>
 <div class="section" id="a-note-on-security">
 <h2>A note on security<a class="headerlink" href="#a-note-on-security" title="Permalink to this headline">¶</a></h2>
-<p>While jrnl follows best practises, true security is an illusion. Specifically, jrnl will leave traces in your memory and your shell history &#8211; it&#8217;s meant to keep journals secure in transit, for example when storing it on an <a class="reference external" href="http://techcrunch.com/2014/04/09/condoleezza-rice-joins-dropboxs-board/">untrusted</a> services such as Dropbox. If you&#8217;re concerned about security, disable history logging for journal in your <code class="docutils literal"><span class="pre">.bashrc</span></code></p>
+<p>While jrnl follows best practises, true security is an illusion. Specifically, jrnl will leave traces in your memory and your shell history – it’s meant to keep journals secure in transit, for example when storing it on an <a class="reference external" href="http://techcrunch.com/2014/04/09/condoleezza-rice-joins-dropboxs-board/">untrusted</a> services such as Dropbox. If you’re concerned about security, disable history logging for journal in your <code class="docutils literal"><span class="pre">.bashrc</span></code></p>
 <div class="highlight-sh"><div class="highlight"><pre><span></span><span class="nv">HISTIGNORE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HISTIGNORE</span><span class="s2">:jrnl *&quot;</span>
 </pre></div>
 </div>
@@ -74,7 +71,7 @@
 </div>
 <div class="section" id="manual-decryption">
 <h2>Manual decryption<a class="headerlink" href="#manual-decryption" title="Permalink to this headline">¶</a></h2>
-<p>Should you ever want to decrypt your journal manually, you can do so with any program that supports the AES algorithm in CBC. The key used for encryption is the SHA-256-hash of your password, the IV (initialisation vector) is stored in the first 16 bytes of the encrypted file. The plain text is encoded in UTF-8 and padded according to PKCS#7 before being encrypted. Here&#8217;s a Python script that you can use to decrypt your journal</p>
+<p>Should you ever want to decrypt your journal manually, you can do so with any program that supports the AES algorithm in CBC. The key used for encryption is the SHA-256-hash of your password, the IV (initialisation vector) is stored in the first 16 bytes of the encrypted file. The plain text is encoded in UTF-8 and padded according to PKCS#7 before being encrypted. Here’s a Python script that you can use to decrypt your journal</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="kn">import</span> <span class="nn">argparse</span>
