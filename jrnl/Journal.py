@@ -233,7 +233,7 @@ class Journal(object):
                     e.body = ''
         self.entries = result
 
-    def new_entry(self, raw, date=None, sort=True):
+    def new_entry(self, raw, date=None, sort=True, quote=None):
         """Constructs a new entry from some raw text input.
         If a date is given, it will parse and use this, otherwise scan for a date in the input first."""
 
@@ -257,6 +257,14 @@ class Journal(object):
                 title = title[:-1].strip()
         if not date:  # Still nothing? Meh, just live in the moment.
             date = time.parse("now")
+
+        if quote:
+            if quote != True:
+                q = util.get_quote(quote)
+            else:
+                q = util.get_quote(config['quotefile'])
+            body = q + body
+
         entry = Entry.Entry(self, date, title, body, starred=starred)
         entry.modified = True
         self.entries.append(entry)
