@@ -166,13 +166,12 @@ def byte2int(b):
     This is equivalent to ord(bs[0]) on Python 2 and bs[0] on Python 3."""
     return ord(b)if PY2 else b
 
-# def get_quote(config, filename=None):
-def get_quote(filename=None):
+def get_quote(config, filename=None):
     """Pull a random quote from a file."""
     if filename:
         file = filename
-    # else:
-        # file = config['quotefile']
+    else:
+        file = config['quotefile']
 
     quotes = load_and_fix_json(file)
 
@@ -181,8 +180,4 @@ def get_quote(filename=None):
     if q['book']:
         quote = quote + ', ' + q['book']
 
-    return quote
-
-
-if __name__ == "__main__":
-    print(get_quote('quotes.json'))
+    return quote + '\n'
