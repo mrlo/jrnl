@@ -14,6 +14,7 @@ import subprocess
 import codecs
 import unicodedata
 import logging
+import random
 
 PY3 = sys.version_info[0] == 3
 PY2 = sys.version_info[0] == 2
@@ -164,3 +165,24 @@ def byte2int(b):
     """Converts a byte to an integer.
     This is equivalent to ord(bs[0]) on Python 2 and bs[0] on Python 3."""
     return ord(b)if PY2 else b
+
+# def get_quote(config, filename=None):
+def get_quote(filename=None):
+    """Pull a random quote from a file."""
+    if filename:
+        file = filename
+    # else:
+        # file = config['quotefile']
+
+    quotes = load_and_fix_json(file)
+
+    q = random.choice(quotes)
+    quote = '\n'.join(q['quote']) + '\n--' + q['author']
+    if q['book']:
+        quote = quote + ', ' + q['book']
+
+    return quote
+
+
+if __name__ == "__main__":
+    print(get_quote('quotes.json'))
