@@ -31,6 +31,7 @@ default_config = {
     'tagsymbols': '@',
     'highlight': True,
     'linewrap': 79,
+    'quotefile': os.path.expanduser("~/quotes.json")
 }
 
 
