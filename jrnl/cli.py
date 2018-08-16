@@ -33,6 +33,7 @@ def parse_args(args=None):
 
     composing = parser.add_argument_group('Composing', 'To write an entry simply write it on the command line, e.g. "jrnl yesterday at 1pm: Went to the gym."')
     composing.add_argument('text', metavar='', nargs="*")
+    composing.add_argument('-q', '--quote', metavar='FILENAME', dest='quote', help='add a random quote at the start of the journal', nargs='?', default=False, const=True)
 
     reading = parser.add_argument_group('Reading', 'Specifying either of these parameters will display posts of your journal')
     reading.add_argument('-from', dest='start_date', metavar="DATE", help='View entries after this date')
@@ -224,7 +225,11 @@ def run(manual_args=None):
         if util.PY2 and type(raw) is not unicode:
             raw = raw.decode(sys.getfilesystemencoding())
         log.debug('Appending raw line "%s" to journal "%s"', raw, journal_name)
-        journal.new_entry(raw)
+
+        if args.quote:
+            journal.new_entry(raw, quote=args.quote)
+        else:
+            journal.new_entry(raw)
         util.prompt("[Entry added to {0} journal]".format(journal_name))
         journal.write()
     else:
