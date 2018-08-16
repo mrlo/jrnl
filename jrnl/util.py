@@ -168,11 +168,15 @@ def byte2int(b):
 
 def get_quote(filename=None):
     """Pull a random quote from a file."""
-    quotes = load_and_fix_json(file)
+    # need to add checks for when quotes file doesn't exist
+    quotes = load_and_fix_json(filename)
 
-    q = random.choice(quotes)
-    quote = '\n'.join(q['quote']) + '\n--' + q['author']
-    if q['book']:
-        quote = quote + ', ' + q['book']
+    if quotes:
+        q = random.choice(quotes)
+        quote = '\n'.join(q['quote']) + '\n--' + q['author']
+        if q['book']:
+            quote = quote + ', ' + q['book']
 
-    return quote + '\n'
+        return quote + '\n'
+    else:
+        prompt("[No quotes found in your quotes file: {0}]".format(filename))
